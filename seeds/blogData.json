@@ -1,0 +1,20 @@
+[
+    {
+        "username": "BobChan",
+        "destination": "Maui, Hawaii",
+        "trip_rating": 5,
+        "budget": 5000,
+        "lodging": "hotel",
+        "activities": "Sea turtle snorkeling, Kualoa Ranch, Manoa Falls",
+        "experience": "Maui was sooo good! The food was bomb! Best of all - low sales tax!"
+    },
+    {
+        "username": "MichaelJackson",
+        "destination": "Saint Petersburg, Russia",
+        "trip_rating": 5,
+        "budget": 4000,
+        "lodging": "hostel",
+        "activities": "Visited Peterhof, Siteseeing, Neba River",
+        "experience": "Russia has the best dumplings - pelmeni!"
+    }
+]
