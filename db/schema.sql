@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS whirlwind_db;
+CREATE DATABASE whirlwind_db;
