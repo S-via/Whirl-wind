@@ -3,7 +3,7 @@ const { Blog } = require('../../models');
 // inside untils auth.js needs a path to activate this variable
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (re, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const newBlog = await Blog.create({
             ...req.body,
