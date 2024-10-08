@@ -1,4 +1,4 @@
-const router = require('express').Router;
+const router = require('express').Router();
 const { Blog, User } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -40,7 +40,10 @@ router.get('/', async (req, res) => {
 // get one blog
 router.get('/blog/:id', async (req, res) => {
     try {
-        const projectData = await Blog.findOne(req.params.id, {
+        const blogData = await Blog.findOne({
+            where: {
+                id: req.params.id
+            },
             attributes: [
                 'id',
                 'destination',
@@ -55,7 +58,7 @@ router.get('/blog/:id', async (req, res) => {
                     model: User,
                     attributes: ['username'],
                 },
-            ]
+            ],
         });
 
         if (!blogData) {
