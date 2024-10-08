@@ -25,6 +25,11 @@ header,
     background-color: var(--teal);
     color: var(--white);
 }
+.signup-btn {
+    background-color: var(--black);
+    color: var(--white);
+    
+}
 
 .form-input {
     border-color: var(--teal);
