@@ -1,0 +1,33 @@
+:root {
+    --teal: #3f8992;
+    --black: black;
+    --gray: rgb(191, 191, 191);
+    --white: white;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: flex-start;
+    background-color: var(--gray);
+}
+
+nav, header {
+    display: flex;
+}
+
+nav,
+header,
+.btn {
+    background-color: var(--teal);
+    color: var(--white);
+}
+
+.form-input {
+    border-color: var(--teal);
+    border-width: 2px;
+}
+
