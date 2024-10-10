@@ -14,16 +14,39 @@ body {
     background-color: var(--gray);
 }
 
-nav, header {
-    display: flex;
-}
-
 nav,
 header {
+    display: flex;
     background-color: var(--teal);
     color: var(--white);
 }
 
+nav a {
+    color: var(--white);
+    margin-left: 40px;
+    font-size: 30px;
+}
+
+a:hover,
+a:visited {
+    color: var(--white);
+    text-decoration: none;
+}
+
+header {
+    font-size: 4em;
+    font-weight: 900;
+    /* align-content: center; */
+}
+
+.login-header {
+    font-weight: bolder;
+}
+
+.login {
+    margin-right: 20em;
+    margin-left: 20em;
+}
 .form-input {
     border-color: var(--teal);
     border-width: 2px;
