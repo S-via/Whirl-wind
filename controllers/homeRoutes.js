@@ -110,7 +110,7 @@ router.get('/', (req, res) => {
 // });
 
 router.get('/profile', (req, res) => {
-    // If the user is already logged in, redirect the request to blogs
+    // If the user is already logged in, redirect the request to blogs ('Home')
     if (req.session.logged_in) {
         res.redirect("/blogs");
         return;
@@ -133,6 +133,8 @@ router.post("/logout", (req, res) => {
     res.status(400).json({ message: "You must be logged in to log out" });
   }
 });
+
+// render '/' homepage when logging out (add to blogRoutes)
 
 
 module.exports = router;

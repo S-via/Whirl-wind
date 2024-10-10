@@ -1,7 +1,7 @@
 :root {
-    --teal: #3f8992;
+    --teal: #62afbb;
     --black: black;
-    --gray: rgb(191, 191, 191);
+    --gray: rgb(227, 227, 227);
     --white: white;
 }
 
@@ -43,7 +43,11 @@ header {
     font-weight: bolder;
 }
 
-.login {
+.login-link, .signup-link {
+    color: var(--black);;
+}
+
+.login, .signup {
     margin-right: 20em;
     margin-left: 20em;
 }
