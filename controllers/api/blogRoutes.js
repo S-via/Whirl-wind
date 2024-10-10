@@ -3,6 +3,9 @@ const { Blog, User, Comment } = require('../../models');
 // inside untils auth.js needs a path to activate this variable
 const withAuth = require('../../utils/auth');
 
+
+////////////////////////////////////////
+
 // GET api/blogs
 router.get('/', async (req, res) => {
     try {
@@ -12,7 +15,7 @@ router.get('/', async (req, res) => {
                 'destination',
                 'trip_rating',
                 'budget',
-                'lodgin',
+                'lodging',
                 'activities',
                 'experience'
             ],
@@ -36,7 +39,7 @@ router.get('/', async (req, res) => {
 
 });
 // GET /api/blogs/:id
-router.get('/blog/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const blogData = await Blog.findOne({
             where: {
@@ -59,7 +62,7 @@ router.get('/blog/:id', async (req, res) => {
                 {
                     model: Comment,
                     attributes: ['comments', 'blog_id', 'user_id'],
-
+                    
                 },
             ]
         })
@@ -75,11 +78,22 @@ router.get('/blog/:id', async (req, res) => {
     }
 });
 // allows to edit post 
-router.get('edit/:id',withAuth,async (req,res)=>{
+router.get('/edit/:id', withAuth,async (req,res)=>{
     try{
         const blogData = await Blog.findOne({
-            ...req.body,
-            user_id:req.session.user_id,
+            where: {
+                id: req.params.id,
+                user_id:req.session.user_id,
+            },
+            attributes: [
+                'id',
+                'destination',
+                'trip_rating',
+                'budget',
+                'lodging',
+                'activities',
+                'experience'
+            ],
             
             include: [
                 {
