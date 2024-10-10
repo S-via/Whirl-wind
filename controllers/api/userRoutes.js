@@ -1,5 +1,9 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User,Blog } = require('../../models');
+
+
+
+
 
 // route to create a new user
 router.post('/', async (req, res) => {
@@ -35,12 +39,16 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect, please try again (:' });
             return;
         }
+        // If login is succesfull fetch users blogs
+        const userBlogs = await Blog.findAll({
+            where:{user_id:userData.id}
+        })
         // if user credentials are correct, save their data in the session cookie
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
 
-            res.json({ user: userData, message: 'Logged in (:' });
+            res.json({ user: userData, blogs: userBlogs, message: 'Logged in (:' });
 
         });
     } catch (err) {
