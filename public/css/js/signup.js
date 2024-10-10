@@ -16,7 +16,7 @@ const signupFormHandler = async (event) => {
 
     if (response.ok) {
       // if request is successful, redirect to the dashboard
-      document.location.replace('/profile');
+      document.location.replace('/blogs');
     } else {
       alert(response.statusText);
     }

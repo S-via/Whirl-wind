@@ -39,7 +39,7 @@ header {
     /* align-content: center; */
 }
 
-.login-header {
+.login-header, .signup-header {
     font-weight: bolder;
 }
 
