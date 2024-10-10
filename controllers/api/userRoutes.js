@@ -59,4 +59,10 @@ router.post('/logout', (req, res) => {
     }
 });
 
+// make the main page the login view
+router.get('/', (req, res) => {
+    // res.redirect('/login');
+    res.render('login')
+})
+
 module.exports = router;

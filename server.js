@@ -32,15 +32,16 @@ const sess = {
 app.use(session(sess));
 
 // to inform which templets from handle bars
-app.engine('handlebars',hbs.engine);
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
-app.use(express.urlencoded({extenden:true}));
+app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname,'public')));
 
 // find path to route 
 app.use(routes);
+
 sequelize.sync({force: false}).then(()=>{
     app.listen(PORT, () => console.log(`App listening ${PORT}`));
 })
