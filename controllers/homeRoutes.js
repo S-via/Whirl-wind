@@ -134,6 +134,8 @@ router.post("/logout", (req, res) => {
   }
 });
 
+// render '/' homepage when logging out (add to blogRoutes)
+
 
 module.exports = router;
 
