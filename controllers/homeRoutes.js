@@ -110,7 +110,7 @@ router.get('/', (req, res) => {
 // });
 
 router.get('/profile', (req, res) => {
-    // If the user is already logged in, redirect the request to blogs
+    // If the user is already logged in, redirect the request to blogs ('Home')
     if (req.session.logged_in) {
         res.redirect("/blogs");
         return;
