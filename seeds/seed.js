@@ -1,35 +1,30 @@
 // entry for models
 const sequelize = require('../config/connection');
-const { Blog, User, Comment } = require('../models');
+const { User, Blog } = require('../models');
 
 const userData = require('./userData.json');
 const blogData = require('./blogData.json');
-const commentData = require('./commentData.json');
 
 const seedDatabase = async () => {
-    try {
         await sequelize.sync({ force: true });
 
         const users = await User.bulkCreate(userData, {
             individualHooks: true,
             returning: true,
         });
-        const blogs = await Blog.bulkCreate(blogData, {
-            returning: true,
-        });
+        console.log("Users seeded successfully");
+        // const blogs = await Blog.bulkCreate(blogData, {
+        //     returning: true,
+        // });
 
-        await Comment.bulkCreate(
-            commentData.map(comment => ({
-                ...comment,
-                user_id: users[Math.floor(Math.random() * userData.length)].id,
-                blog_id: blogs[Math.florr(Math.random() * blogs.length)].id,
-            })),
-            {
-                returning: true,
+        for (const blog of blogData) {
+            await Blog.create({
+                ...blog,
             });
+        };
+        console.log('Blog posts seeded successfully');
+
         process.exit(0);
-    } catch (error) {
-        console.error('failed', error);
-    }
 }
-module.exports = seedDatabase;
+
+seedDatabase();
