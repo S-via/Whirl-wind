@@ -88,7 +88,24 @@ router.get('/', (req, res) => {
     res.render('homepage');
 })
 
-
+router.get('/blogs', async (req, res) => {
+    try {
+        if (!req.session.logged_in) {
+            res.redirect("/login");
+        }
+        const blogData = await Blog.findAll({
+            where: {
+                user_id: req.session.user_id
+            }
+        });
+        const blogposts = blogData.map(blog => blog.get({ plain: true }))
+        res.render('blogs', { blogposts });
+    } catch (err) {
+        console.error(err)
+        res.status(500).end()
+    }
+ })
+ 
 // Use withAuth middleware to prevent access to route
 // router.get('/profile', withAuth, async (req, res) => {
 //     try {
