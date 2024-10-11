@@ -1,22 +1,63 @@
-{{!-- render homepage header --}}
-<header class="display-flex p-2">
-    <div class="whirlwind">Whirlwind</div>
-</header>
+<div class="row mt-4">
+    {{#if blogposts.length}}
+        {{!-- homepage shows preview of all blog posts;
+        loop over each object in the blogposts array --}}
+        {{#each blogposts as |blogpost| }} 
+        <div class="col-6 mb-1 mt-1 blogpost">
+            <div class="row blogHeader justify-content-between">
+                <div>{{blogpost.title}}</div>
+                <div>Posted by {{blogpost.user_id}} on {{format_date blogpost.dateCreated}}</div>
+            </div>
+            <div class="row blogContent">
+                <div>{{blogpost.content}}</div>
+            </div>
+            {{!-- show number of comments --}}
+            <div class="row blogComments">
+                <div>{{blogpost.comment.length}} Comments</div>
+            </div>
+        </div>
+        {{/each}}
+    {{/if}}
 
-{{!-- homepage shows preview of all blog posts;
-loop over each object in the blogposts array --}}
-{{#each blogposts as |blogpost| }} 
-<div class="row mb-1 mt-1 blogpost">
-    <div class="row blogHeader justify-content-between">
-        <div>{{blogpost.title}}</div>
-        <div>Posted by {{blogpost.user_id}} on {{format_date blogpost.dateCreated}}</div>
+    <div class="col-6">
+
+        <form class="form new-blog-post">
+
+            <div class="form-group"></div>
+                <label for="destination">Destination: </label>
+                <input class="form-input form-control" type="text" id="destination" name="destination" />
+            </div>
+            <div class="form-group">
+                <label for="rating" class="form-label">Trip Rating (1-5): </label>
+                <input class="form-input form-control" type="number" id="rating" name="rating" />
+            </div>
+            <div class="form-group">
+                <label for="budget" class="form-label">Budget: </label>
+                <input class="form-input form-control" type="number " id="budget" name="budget" />
+            </div>
+            <div class="form-group">
+                <label for="lodging" class="form-label">Lodging: </label>
+                <input class="form-input form-control" type="text" id="lodging" name="lodging" />
+            </div>
+            <div class="form-group">
+                <label for="activities" class="form-label">Activities: </label>
+                <input class="form-input form-control" type="text" id="activities" name="activities" />
+            </div>
+            <div class="form-group">
+                <label for="experience" class="form-label">Experience: </label>
+                <textarea class="form-input form-control" type="text" id="experience" name="experience"></textarea>
+            </div>
+            <!-- Submit Button -->
+            <div class="d-grid gap-3 mb-3">
+                <button class="btn btn-secondary w-100" type="submit">Submit</button>
+            </div>
+
+
+        </form>
+
+
     </div>
-    <div class="row blogContent">
-        <div>{{blogpost.content}}</div>
-    </div>
-    {{!-- show number of comments --}}
-    <div class="row blogComments">
-        <div>{{blogpost.comment.length}} Comments</div>
-    </div>
+
 </div>
-{{/each}}
+
+<script src="/js/blogs.js"></script>
