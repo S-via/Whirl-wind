@@ -88,6 +88,17 @@ router.get('/', (req, res) => {
     res.render('homepage');
 })
 
+// login route
+router.get('/login', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/blogs');
+        return;
+    }
+
+    res.render('homepage');
+})
+
+
 router.get('/blogs', async (req, res) => {
     try {
         if (!req.session.logged_in) {
@@ -135,6 +146,8 @@ router.get('/profile', (req, res) => {
     //otherwise render homepage view (login)
     res.render('homepage');
 })
+
+
 
 // render signup view
 router.get('/signup', (req, res) => {

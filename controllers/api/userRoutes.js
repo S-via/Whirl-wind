@@ -22,6 +22,7 @@ router.post('/', async (req, res) => {
         res.status(400).json(err);
     }
 });
+
 // route for existing users to login
 router.post('/login', async (req, res) => {
     try {

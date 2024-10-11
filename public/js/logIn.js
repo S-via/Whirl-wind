@@ -1,6 +1,6 @@
 // handler from Finola's Challenge 14
-const loginFormHandler = async (event) => {
-    event.preventDefault();
+const loginFormHandler = async () => {
+    // event.preventDefault();
 
     // get values from the login inputs
     const username = document.querySelector('#username-login').value.trim();
@@ -8,7 +8,7 @@ const loginFormHandler = async (event) => {
 
     // if both fields have values, send POST request to API endpoint
     if (username && password) {
-        const response = await fetch('/api/users/login', {
+        const response = await fetch('/api/users', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: { 'Content-type': 'application/json' },
@@ -19,7 +19,7 @@ const loginFormHandler = async (event) => {
             document.location.replace('/blogs');
         } else {
             alert(
-              "Login failed. Please check your spelling, or sign up to The Tech Blog."
+              "Login failed. Please check your spelling, or sign up to Whirlwind."
             );
             console.error(response.statusText);
         }
