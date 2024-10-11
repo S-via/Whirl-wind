@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         // match entered email to user email in db
-        const userData = await User.findOne({ where: { email: req.body.email } });
+        const userData = await User.findOne({ where: { username: req.body.username } });
         // if email does not exist, return error
         if (!userData) {
             res.status(400).json({ message: 'Incorrect, please try again (:' })
