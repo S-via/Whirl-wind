@@ -3,10 +3,6 @@ const { Blog, User, Comment } = require("../../models");
 // inside untils auth.js needs a path to activate this variable
 const withAuth = require("../../utils/auth");
 
-// redirect to homepage (login) if user is not logged in
-router.get("/", withAuth, (req, res) => {
-    res.render('profile');
-});
 
 // view user-specific posts
 router.get('/', withAuth, async (req, res) => {
@@ -23,7 +19,7 @@ router.get('/', withAuth, async (req, res) => {
         const blogPosts = blogData.map((blogpost) => blogpost.get({ plain: true}));
         res.render('profile', {
             blogPosts,
-            logged_in: req.session.logged_in
+            logged_in: true
         });
     } catch (err) {
         res.status(500).json(err);
@@ -31,16 +27,11 @@ router.get('/', withAuth, async (req, res) => {
 })
 
 
-router.post("/logout", (req, res) => {
-  if (req.session.logged_in) {
+router.post("/logout", withAuth, (req, res) => {
     req.session.destroy(() => {
       res.status(200).end();
-    });
-  } else {
-    res.status(400).json({ message: "You must be logged in to log out" });
-  }
+  });
 });
-
 
 
 module.exports = router;
