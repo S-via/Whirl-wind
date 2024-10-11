@@ -15,13 +15,17 @@ const loginFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            // if request is successful, redirect to the user's profile
+            // if request is successful, redirect to the "Home"
             document.location.replace('/blogs');
         } else {
-            alert(response.statusText);
+            alert(
+              "Login failed. Please check your spelling, or sign up to The Tech Blog."
+            );
+            console.error(response.statusText);
         }
     } else{
         alert('Please enter both a username and password');
+        console.error(err);
     }
 }
 
