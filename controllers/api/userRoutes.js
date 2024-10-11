@@ -2,9 +2,6 @@ const router = require('express').Router();
 const { User,Blog } = require('../../models');
 
 
-
-
-
 // route to create a new user
 router.post('/', async (req, res) => {
     try {
@@ -27,7 +24,11 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         // match entered email to user email in db
-        const userData = await User.findOne({ where: { username: req.body.username } });
+        const userData = await User.findOne({ 
+            where: { 
+                username: req.body.username
+             } 
+            });
         // if email does not exist, return error
         if (!userData) {
             res.status(400).json({ message: 'Incorrect, please try again (:' })
@@ -40,17 +41,11 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect, please try again (:' });
             return;
         }
-        // If login is succesfull fetch users blogs
-        const userBlogs = await Blog.findAll({
-            where:{user_id:userData.id}
-        })
         // if user credentials are correct, save their data in the session cookie
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
-
-            res.json({ user: userData, blogs: userBlogs, message: 'Logged in (:' });
-
+            res.json({ user: userData, message: 'Logged in (:' });
         });
     } catch (err) {
         res.status(400).json(err);
