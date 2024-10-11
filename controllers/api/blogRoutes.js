@@ -3,81 +3,30 @@ const { Blog, User, Comment } = require('../../models');
 // inside untils auth.js needs a path to activate this variable
 const withAuth = require('../../utils/auth');
 
-
-////////////////////////////////////////
-
 // GET api/blogs with logged in users to view ALL blog post 
 router.get('/', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.findAll({
-            attributes: [
-                'id',
-                'destination',
-                'trip_rating',
-                'budget',
-                'lodging',
-                'activities',
-                'experience'
-            ],
             include: [
                 {
                     model: User,
                     attributes: ['username'],
                 },
-                {
-                    model: Comment,
-                    attributes: ['comments', 'blog_id', 'user_id'],
-
-                }
             ]
         });
-        res.status(200).json(blogData)
+        // serialize data
+        const blogposts = blogData.map((blogpost) => blogpost.get({ plain: true }));
+        res.render('blogs', {
+            blogposts,
+            logged_in: req.session.logged_in
+        })
 
     } catch (err) {
         res.status(500).json(err);
     }
 
 });
-// GET /api/blogs/:id and allow user to create new post 
-router.get('/:id', withAuth, async (req, res) => {
-    try {
-        const blogData = await Blog.findOne({
-            where: {
-                id: req.params.id
-            },
-            attributes: [
-                'id',
-                'destination',
-                'trip_rating',
-                'budget',
-                'lodging',
-                'activities',
-                'experience'
-            ],
-            include: [
-                {
-                    model: User,
-                    attributes: ['username'],
-                },
-                {
-                    model: Comment,
-                    attributes: ['comments', 'blog_id', 'user_id'],
-                    
-                },
-            ]
-        })
-        if (!blogData) {
-            res.status(404).json({ message: 'no blog found' })
-            return;
-        }
-        // renders specific post to the blogs page 
-        const blog = blogData.get({plain:true}); 
-        res.render('blogs',{blog,loggedIn:true})
-        
-    } catch (err) {
-        res.status(500).json(err)
-    }
-});
+
 
 router.post('/', withAuth, async (req, res) => {
     try {
@@ -87,13 +36,22 @@ router.post('/', withAuth, async (req, res) => {
             user_id: req.session.user_id,
         });
         // respond with new blog post
-        res.status(201).json(newBlog);
+        res.status(200).json(newBlog);
     } catch (err) {
         res.status(400).json(err);
     }
  });
  
-
+// POST - '/logout' route
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+        req.session.destroy(() => {
+            res.status(200).end();
+        });
+    } else {
+        res.status(400).json({ message: 'error logging out'});
+    }
+});
 
 
 

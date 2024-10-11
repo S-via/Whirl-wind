@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User,Blog } = require('../../models');
+const { User, Blog } = require('../../models');
 
 
 // route to create a new user
@@ -23,15 +23,17 @@ router.post('/', async (req, res) => {
 // route for existing users to login
 router.post('/login', async (req, res) => {
     try {
-        // match entered email to user email in db
+        // match entered username to username in db
         const userData = await User.findOne({ 
             where: { 
                 username: req.body.username
-             } 
+             },
+             attributes: ['id', 'username', 'password'],
             });
-        // if email does not exist, return error
-        if (!userData) {
-            res.status(400).json({ message: 'Incorrect, please try again (:' })
+        // if username does not exist, return error
+        if (userData === null) {
+            console.error(response); //server response is null
+            // res.status(400).json({ message: 'Invalid entry' });
             return;
         }
         // checkPassword function from User model

@@ -4,6 +4,7 @@
     </div>
 </div>
 
+{{!-- 
 <div class="mb-3 mt-3">
     <div class="col-md-6">
         <h3>Edit Blog Post:</h3>
@@ -40,7 +41,22 @@
             </div>
         </form>
     </div>
+</div> --}}
+
+<div class="row mt-4">
+    {{#if blogposts.length}}
+        {{!-- homepage shows preview of all blog posts;
+        loop over each object in the blogposts array --}}
+        {{#each blogposts as |blogpost| }} 
+        <div class="col-6 mb-1 mt-1 blogpost">
+            <div class="row blogHeader justify-content-between">
+                <div>{{blogpost.destination}}</div>
+                <div>Posted by {{blogpost.user.username}} on {{format_date blogpost.dateCreated}}</div>
+            </div>
+        </div>
+        {{/each}}
+    {{/if}}
 </div>
 
 
-<script src="/js/profile.js"></script>
+{{!-- <script src="/js/logout.js"></script> --}}

@@ -1,29 +1,42 @@
 <div class="row mt-4">
+    <div class="col-md-6">
     {{#if blogposts.length}}
         {{!-- homepage shows preview of all blog posts;
         loop over each object in the blogposts array --}}
         {{#each blogposts as |blogpost| }} 
-        <div class="col-6 mb-1 mt-1 blogpost">
+        <div class="mb-1 m-3 blogpost">
             <div class="row blogHeader justify-content-between">
-                <div>{{blogpost.title}}</div>
-                <div>Posted by {{blogpost.user_id}} on {{format_date blogpost.dateCreated}}</div>
+                <div>{{blogpost.destination}}</div>
+                <div>Posted by {{blogpost.user.username}} on {{format_date blogpost.dateCreated}}</div>
             </div>
-            <div class="row blogContent">
-                <div>{{blogpost.content}}</div>
+            <div class="row rating">
+                <div>Trip Rating: {{blogpost.trip_rating}}</div>
             </div>
-            {{!-- show number of comments --}}
-            <div class="row blogComments">
-                <div>{{blogpost.comment.length}} Comments</div>
+            <div class="row budget">
+                <div>Budget: {{blogpost.budget}}</div>
+            </div>
+            <div class="row lodging">
+                <div>Lodging: {{blogpost.lodging}}</div>
+            </div>
+            <div class="row activities">
+                <div>Activities: {{blogpost.activities}}</div>
+            </div>
+            <div class="row experience">
+                <div>Experience: {{blogpost.experience}}</div>
             </div>
         </div>
         {{/each}}
     {{/if}}
+    </div>
 
-    <div class="col-6">
+    <div class="col-md-6">
+        <div>
+            <h3>Create New Post</h3>
+        </div>
 
         <form class="form new-blog-post">
 
-            <div class="form-group"></div>
+            <div class="form-group">
                 <label for="destination">Destination: </label>
                 <input class="form-input form-control" type="text" id="destination" name="destination" />
             </div>
@@ -60,4 +73,4 @@
 
 </div>
 
-{{!-- <script src="/js/blogs.js"></script> --}}
+{{!-- <script src="/js/logout.js"></script> --}}

@@ -39,6 +39,12 @@ header {
     /* align-content: center; */
 }
 
+main {
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+
 .login-header, .signup-header {
     font-weight: bolder;
 }
@@ -54,4 +60,10 @@ header {
 .form-input {
     border-color: var(--teal);
     border-width: 2px;
+}
+
+.blogpost {
+    border: 2px;
+    border-color: var(--black);
+    font-size: 20px;
 }
