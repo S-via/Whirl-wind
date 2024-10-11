@@ -1,6 +1,6 @@
 // handler from Finola's Challenge 14
-const loginFormHandler = async () => {
-    // event.preventDefault();
+const loginFormHandler = async (event) => {
+    event.preventDefault();
 
     // get values from the login inputs
     const username = document.querySelector('#username-login').value.trim();
@@ -8,10 +8,10 @@ const loginFormHandler = async () => {
 
     // if both fields have values, send POST request to API endpoint
     if (username && password) {
-        const response = await fetch('/api/users', {
-            method: 'POST',
-            body: JSON.stringify({ username, password }),
-            headers: { 'Content-type': 'application/json' },
+        const response = await fetch("/api/users", {
+          method: "POST",
+          body: JSON.stringify({ username, password }),
+          headers: { "Content-type": "application/json" },
         });
 
         if (response.ok) {
