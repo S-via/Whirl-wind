@@ -16,12 +16,17 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // require handlebars 
-const hbs = exphbs.create({helpers});
+const hbs = exphbs.create({ helpers });
 
 // unfinished cookie
 const sess = {
     secret: 'Super secret secret ',
-    cookie:{},
+    cookie: {
+        maxAge: 300000,
+        httpOnly: true,
+        secure: false,
+        sameSite: 'strict',
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
@@ -36,12 +41,12 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // find path to route 
 app.use(routes);
 
-sequelize.sync({force: false}).then(()=>{
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`App listening ${PORT}`));
 })
