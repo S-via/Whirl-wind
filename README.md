@@ -1,5 +1,5 @@
 # Whirl-wind
-<!--image  -->
+![whirlwind](/img/whirlwind-mp.png)
 Deployed Application <!--Deployed URL  -->
 
 ### USER STORY
@@ -35,20 +35,20 @@ When the user is at the Whirlwind main page they will see at the top a navigatio
 <br>
 They will also see an option to
 log in using their username and password or sign up if they don't have an account<br>
-Page also displays photos of users trips.
-![mainpage]() <br>
+Page also displays photos of users trips
+![whirlwind](/img/whirlwind-mp.png)<br>
  
 ### Signup <br>
 When user clicks Sign Up<br>
 they will be redirected to create account with Email, create a Username and Password<br>
 Once they click Create Your Account they will be redirected to New Post
-![signup]()<br>
+![signup](/img/signup.png)<br>
 
 ### New Post <br>
 When user is in New Post<br>
 they will be asked 6 question to get information for an Informational Post<br>
 Once user clicks Submmit 
-![newpost]()<br>
+![newpost](/img/newpost.png)<br>
 
 ![blogs]()<br>
 ![profile]()<br>
