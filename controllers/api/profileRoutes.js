@@ -15,11 +15,14 @@ router.get('/', withAuth, async (req, res) => {
                 {model: User, attributes: ['username']}
             ],
         });
+        // use optional chaining to access username property
+        const username = blogData[0]?.User?.username;
         // serialize data 
         const blogPosts = blogData.map((blogpost) => blogpost.get({ plain: true}));
         res.render('profile', {
             blogPosts,
-            logged_in: true
+            logged_in: true,
+            username
         });
     } catch (err) {
         res.status(500).json(err);

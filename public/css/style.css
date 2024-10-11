@@ -1,6 +1,7 @@
 :root {
     --teal: #62afbb;
     --black: black;
+    --darkGray: rgb(121, 121, 121);
     --gray: rgb(227, 227, 227);
     --white: white;
 }
@@ -45,8 +46,40 @@ main {
 }
 
 
-.login-header, .signup-header {
+.login-header, 
+.signup-header,
+.blogHeader {
     font-weight: bolder;
+    padding: 2px 5px 2px 5px;
+    font-size: 20px;
+}
+
+.blogHeader {
+    background-color: var(--teal);
+    color: var(--white);
+    padding-left: 10px;
+}
+
+.blog-field {
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: var(--teal);
+    padding-left: 2em;
+    padding-right: 2em;
+    color: var(--darkGray);
+    
+}
+
+.field-label {
+    font-weight: bold;
+}
+
+.blogpost {
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--teal);
+    
+    
 }
 
 .login-link, .signup-link {
@@ -57,13 +90,22 @@ main {
     margin-right: 20em;
     margin-left: 20em;
 }
+
+.form-label, .form-input, .welcome {
+    color: var(--darkGray);
+    font-weight: 600;
+}
+
+
 .form-input {
     border-color: var(--teal);
     border-width: 2px;
+    
 }
 
-.blogpost {
-    border: 2px;
-    border-color: var(--black);
-    font-size: 20px;
+.new-blog-form {
+    border-style: solid;
+    border-color: var(--teal);
+    padding: 2em;
+    
 }

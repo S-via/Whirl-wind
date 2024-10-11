@@ -1,43 +1,48 @@
-<div class="row mt-4">
-    <div class="col-md-6">
+<div class="row d-flex mt-4">
+    <div class="col-6">
     {{#if blogposts.length}}
         {{!-- homepage shows preview of all blog posts;
         loop over each object in the blogposts array --}}
         {{#each blogposts as |blogpost| }} 
-        <div class="mb-1 m-3 blogpost">
-            <div class="row blogHeader justify-content-between">
-                <div>{{blogpost.destination}}</div>
-                <div>Posted by {{blogpost.username}} on {{format_date blogpost.dateCreated}}</div>
+        <div class="mb-3 mt-3 blogpost">
+            <div class="d-flex blogHeader justify-content-between">
+                <span>{{blogpost.destination}}</span>
+                <span>Posted by {{blogpost.user_id.username}} on {{format_date blogpost.dateCreated}}</span>
             </div>
-            <div class="row rating">
-                <div>Trip Rating: {{blogpost.trip_rating}}</div>
+            <div class="blog-field d-flex rating p-1">
+                <span class="field-label w-25">Trip Rating</span>
+                <span>{{blogpost.trip_rating}}</span>
             </div>
-            <div class="row budget">
-                <div>Budget: {{blogpost.budget}}</div>
+            <div class="blog-field d-flex budget p-1">
+                <span class="field-label w-25">Budget</span>
+                <span>{{blogpost.budget}}</span>
             </div>
-            <div class="row lodging">
-                <div>Lodging: {{blogpost.lodging}}</div>
+            <div class="blog-field d-flex lodging p-1">
+                <span class="field-label w-25">Lodging</span>
+                <span>{{blogpost.lodging}}</span>
             </div>
-            <div class="row activities">
-                <div>Activities: {{blogpost.activities}}</div>
+            <div class="blog-field d-flex activities p-1">
+                <span class="field-label w-25">Activities</span>
+                <span>{{blogpost.activities}}</span>
             </div>
-            <div class="row experience">
-                <div>Experience: {{blogpost.experience}}</div>
+            <div class="blog-field d-flex experience p-1">
+                <span class="field-label w-25">Experience</span>
+                <span>{{blogpost.experience}}</span>
             </div>
         </div>
         {{/each}}
     {{/if}}
     </div>
 
-    <div class="col-md-6">
-        <div>
-            <h3>Create New Post</h3>
+    <div class="col-6 mt-3 mb-3">
+        <div class="blogHeader">
+            <div>Create New Post</div>
         </div>
 
-        <form class="form new-blog-post">
+        <form class="form new-blog-form">
 
             <div class="form-group">
-                <label for="destination">Destination: </label>
+                <label for="destination" class="form-label">Destination: </label>
                 <input class="form-input form-control" type="text" id="destination" name="destination" />
             </div>
             <div class="form-group">
@@ -61,7 +66,7 @@
                 <textarea class="form-input form-control" type="text" id="experience" name="experience"></textarea>
             </div>
             <!-- Submit Button -->
-            <div class="d-grid gap-3 mb-3">
+            <div class="d-grid gap-3">
                 <button class="btn btn-secondary w-100" type="submit">Submit</button>
             </div>
 
@@ -73,4 +78,5 @@
 
 </div>
 
-{{!-- <script src="/js/logout.js"></script> --}}
+{{!-- script to handle form submission --}}
+<script src="/js/new-blog.js"></script>

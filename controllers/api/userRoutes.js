@@ -3,7 +3,7 @@ const { User, Blog } = require('../../models');
 
 
 // route to create a new user
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
         // request body had username, email, password
         const userData = await User.create(req.body);
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 });
 
 // route for existing users to login
-router.post('/login', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         // match entered username to username in db
         const userData = await User.findOne({ 
@@ -31,9 +31,9 @@ router.post('/login', async (req, res) => {
              attributes: ['id', 'username', 'password'],
             });
         // if username does not exist, return error
-        if (userData === null) {
-            console.error(response); //server response is null
-            // res.status(400).json({ message: 'Invalid entry' });
+        if (!userData) {
+            // console.error(response); //server response was null; fixed
+            res.status(400).json({ message: 'Invalid entry' });
             return;
         }
         // checkPassword function from User model
