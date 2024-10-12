@@ -1,0 +1,34 @@
+<div class="row d-flex mt-1  signup">
+    
+
+    <div class="col-12 mb-3 mt-3">
+
+        <form class="form signup-form">
+            
+            <div class="col-12 d-flex justify-content-center signup-header">  <!-- flex row -->
+                <h3>Sign Up</h3>
+            </div>
+        
+            <div class="form-group">
+                <label for="email-signup" class="form-label">Email:</label>
+                <input class="form-input form-control" type="text" id="email-signup" name="email-signup" />
+            </div>
+            <div class="form-group">
+                <label for="username-signup" class="form-label">Username:</label>
+                <input class="form-input form-control" type="text" id="username-signup" name="username-signup" />
+            </div>
+            <div class="form-group">
+                <label for="password-signup" class="form-label">Password:</label>
+                <input class="form-input form-control" type="password" id="password-signup" name="password-signup" />
+            </div>
+            <div class="d-grid gap-3 mb-3">
+                <button class="btn btn-secondary w-100" type="submit">Create Your Account</button>
+            </div>
+            <div>
+                    <a href="/" class="login-link">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
+{{!-- script to check signup credentials against info in db --}}
+<script src="/js/signup.js"></script> <!-- remove starting period -->

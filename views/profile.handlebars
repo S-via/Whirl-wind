@@ -1,0 +1,44 @@
+<div class="row justify-content-start mt-3 mb-3 welcome">
+    <div>{{name}}'s blog posts</div>
+</div>
+
+
+<div class="row d-flex mt-4">
+    <div class="col-6">
+    {{#if blogposts.length}}
+        {{!-- homepage shows preview of all blog posts;
+        loop over each object in the blogposts array --}}
+        {{#each blogposts as |blogpost|}} 
+        <div class="mb-3 mt-3 blogpost">
+            <div class="d-flex blogHeader justify-content-between">
+                <span>{{blogpost.destination}}</span>
+                <span>Posted by {{name}} on {{format_date blogpost.dateCreated}}</span>
+            </div>
+            <div class="blog-field d-flex rating p-1">
+                <span class="field-label w-25">Trip Rating</span>
+                <span class="w-75">{{blogpost.trip_rating}}</span>
+            </div>
+            <div class="blog-field d-flex budget p-1">
+                <span class="field-label w-25">Budget</span>
+                <span class="w-75">{{blogpost.budget}}</span>
+            </div>
+            <div class="blog-field d-flex lodging p-1">
+                <span class="field-label w-25">Lodging</span>
+                <span class="w-75">{{blogpost.lodging}}</span>
+            </div>
+            <div class="blog-field d-flex activities p-1">
+                <span class="field-label w-25">Activities</span>
+                <span class="w-75">{{blogpost.activities}}</span>
+            </div>
+            <div class="blog-field d-flex experience p-1">
+                <span class="field-label w-25">Experience</span>
+                <span class="w-75">{{blogpost.experience}}</span>
+            </div>
+        </div>
+        {{/each}}
+    {{/if}}
+    </div>
+</div>
+
+
+{{!-- <script src="/js/logout.js"></script> --}}

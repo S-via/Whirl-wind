@@ -13,7 +13,7 @@ Blog.init(
             autoIncrement: true,
         }, 
         destination: {
-            type: DatatTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         trip_rating: {
@@ -32,16 +32,21 @@ Blog.init(
             }
         },
         lodging: {
-            type: DatatTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         activities: {
-            type: DatatTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         experience: {
-            type: DatatTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
+        },
+        dateCreated: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: Date.now,
         },
         user_id: {
             type: DataTypes.INTEGER,
