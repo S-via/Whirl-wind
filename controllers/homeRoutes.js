@@ -14,8 +14,16 @@ router.get('/', (req, res) => {
 
 
 // if user is not logged in when they click "Home", render the login view (homepage)
-router.get('/blogs', withAuth, (req, res) => {
-    res.render('blogs');
+router.get('/blogs', withAuth, async (req, res) => {
+    const blogdata = await Blog.findAll()
+
+    // serialize data and only get info we need
+    const blogposts = blogdata.map(data => data.get({ plain: true }))
+
+    //pass blogposts data
+    res.render('blogs', {
+        blogposts: blogposts
+    });
 })
 
 
