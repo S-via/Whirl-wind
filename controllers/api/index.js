@@ -1,3 +1,4 @@
+
 // require path for router and export blog and user routes
 const router = require('express').Router();
 const blogRoutes = require('./blogRoutes');
@@ -9,3 +10,4 @@ router.use('/users', userRoutes);
 router.use('/profile', profileRoutes);
 
 module.exports = router;
+
