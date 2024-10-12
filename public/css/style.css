@@ -48,16 +48,28 @@ main {
 
 .login-header, 
 .signup-header,
-.blogHeader {
+.blogHeader,
+.new-post-header {
     font-weight: bolder;
     padding: 2px 5px 2px 5px;
     font-size: 20px;
 }
 
-.blogHeader {
+.blogHeader, .new-post-header {
     background-color: var(--teal);
     color: var(--white);
     padding-left: 10px;
+    
+}
+
+.new-post-header {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.blogHeader {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }
 
 .blog-field {
@@ -72,18 +84,20 @@ main {
 
 .field-label {
     font-weight: bold;
+    padding-left: 5px;
 }
 
 .blogpost {
     border-style: solid;
     border-width: 2px;
+    border-radius: 6px;
     border-color: var(--teal);
     
     
 }
 
 .login-link, .signup-link {
-    color: var(--black);;
+    color: var(--darkGray) !important;
 }
 
 .login, .signup {
@@ -91,7 +105,13 @@ main {
     margin-left: 20em;
 }
 
-.form-label, .form-input, .welcome {
+.login-link,
+.signup-link,
+.login-header, 
+.signup-header,
+.form-label, 
+.form-input, 
+.welcome {
     color: var(--darkGray);
     font-weight: 600;
 }
@@ -103,9 +123,18 @@ main {
     
 }
 
-.new-blog-form {
+.new-blog-form, .signup-form, .login-form {
     border-style: solid;
     border-color: var(--teal);
     padding: 2em;
     
+}
+.signup-form,
+.login-form {
+    border-radius: 6px;
+}
+
+.new-blog-form {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }

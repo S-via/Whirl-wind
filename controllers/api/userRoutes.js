@@ -47,18 +47,29 @@ router.post('/', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
-            res.json({ user: userData, message: 'Logged in (:' });
+            res.json({ user: userData, logged_in: true});
+            // redirect to blogs route afer successful login
+            // res.redirect('/blogs', { logged_in: true });
         });
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
+// display blog posts if still logged in
+// router.get('/', async (req, res) => {
+//     if (req.session.logged_in) {
+//         res.redirect('/blogs');
+//     }
+// })
+
 // logout route
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(200).end();
+            // session can expire before logout. Redirect to login page at timeout
+            // res.status(200).redirect("/");
         });
     } else {
         res.status(404).end();

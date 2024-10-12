@@ -6,6 +6,13 @@ const withAuth = require('../../utils/auth');
 // GET api/blogs with logged in users to view ALL blog posts 
 router.get('/', withAuth, async (req, res) => {
     try {
+        // get username to display on blogs view (passed in res.render below)
+        const user = await User.findByPk(req.session.user_id, {
+          attributes: ["username"],
+        });
+        // use optional chaining to access username property
+        const name = user?.username;
+
         const blogData = await Blog.findAll({
             include: [
                 {
@@ -18,7 +25,8 @@ router.get('/', withAuth, async (req, res) => {
         const blogposts = blogData.map((blogpost) => blogpost.get({ plain: true }));
         res.render('blogs', {
             blogposts,
-            logged_in: true
+            logged_in: req.session.logged_in,
+            name
         })
 
     } catch (err) {
@@ -27,7 +35,7 @@ router.get('/', withAuth, async (req, res) => {
 
 });
 
-
+// create new blog post
 router.post('/', withAuth, async (req, res) => {
     try {
         // create new post and associate with logged in user

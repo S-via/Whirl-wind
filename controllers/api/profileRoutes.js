@@ -7,24 +7,32 @@ const withAuth = require("../../utils/auth");
 // view user-specific posts
 router.get('/', withAuth, async (req, res) => {
     try {
-        const blogData = await Blog.findAll({
-            where: {
-                user_id: req.session.user_id,
-            },
-            include: [
-                {model: User, attributes: ['username']}
-            ],
-        });
-        // use optional chaining to access username property
-        const username = blogData[0]?.User?.username;
-        // serialize data 
-        const blogPosts = blogData.map((blogpost) => blogpost.get({ plain: true}));
-        res.render('profile', {
-            blogPosts,
-            logged_in: true,
-            username
-        });
+      // get username to display on blogs view (passed in res.render below)
+      const user = await User.findByPk(req.session.user_id, {
+        attributes: ["username"],
+      });
+      // use optional chaining to access username property
+      const name = user?.username;
+
+      const blogData = await Blog.findAll({
+        where: {
+          user_id: req.session.user_id,
+        },
+        include: [{ model: User, attributes: ["username"] }],
+      });
+
+      // serialize data
+      const blogposts = blogData.map((blogpost) =>
+        blogpost.get({ plain: true })
+      );
+
+      res.render("profile", {
+        blogposts,
+        logged_in: true,
+        name,
+      });
     } catch (err) {
+        console.error(err);
         res.status(500).json(err);
     }
 })
