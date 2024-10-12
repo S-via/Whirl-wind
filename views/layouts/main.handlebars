@@ -12,13 +12,13 @@
     <div class="flex-column">
         <nav class="nav p-2">
             {{#if logged_in}}
-            <a href="/api/blogs">Blogs</a>
-            <a href="/api/profile">Profile</a>
+            <a href="/api/blogs" id="blogs">Blogs</a>
+            <a href="/api/profile" id="profile">Profile</a>
             {{!-- conditionally render logout link --}}            
-            <a href="/api/users/logout">Logout</a>
+            <a href="/api/users/logout" id="logout">Logout</a>
             {{else}}
-            <a href="/api/blogs">Blogs</a>
-            <a href="/api/profile">Profile</a>
+            <a href="/api/blogs" id="blogs">Blogs</a>
+            <a href="/api/profile" id="profile">Profile</a>
             {{/if}}
         </nav>
         <header class="d-flex justify-content-center">

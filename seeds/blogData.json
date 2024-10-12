@@ -1,6 +1,6 @@
 [
     {
-        "username": "BobChan",
+        "user_id": 1,
         "destination": "Maui, Hawaii",
         "trip_rating": 5,
         "budget": 5000,
@@ -9,7 +9,7 @@
         "experience": "Maui was sooo good! The food was bomb! Best of all - low sales tax!"
     },
     {
-        "username": "MichaelJackson",
+        "user_id": 2,
         "destination": "Saint Petersburg, Russia",
         "trip_rating": 5,
         "budget": 4000,

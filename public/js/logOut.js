@@ -6,7 +6,7 @@ const logout = async () => {
 
     if(response.ok) {
         // return the user to the login page
-        document.location.replace('/login');
+        document.location.replace('/');
     } else {
         alert(response.statusText);
     }
