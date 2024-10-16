@@ -32,7 +32,6 @@ router.post('/', async (req, res) => {
             });
         // if username does not exist, return error
         if (!userData) {
-            // console.error(response); //server response was null; fixed
             res.status(400).json({ message: 'Invalid entry' });
             return;
         }
@@ -48,28 +47,18 @@ router.post('/', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
             res.json({ user: userData, logged_in: true});
-            // redirect to blogs route afer successful login
-            // res.redirect('/blogs', { logged_in: true });
         });
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-// display blog posts if still logged in
-// router.get('/', async (req, res) => {
-//     if (req.session.logged_in) {
-//         res.redirect('/blogs');
-//     }
-// })
 
 // logout route
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(200).end();
-            // session can expire before logout. Redirect to login page at timeout
-            // res.status(200).redirect("/");
         });
     } else {
         res.status(404).end();

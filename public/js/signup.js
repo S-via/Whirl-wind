@@ -16,7 +16,7 @@ const signupFormHandler = async (event) => {
 
     if (response.ok) {
       // if request is successful, redirect to the blogs page ("Home")
-      document.location.replace('/blogs'); //res.render('blogs') ?
+      document.location.replace('/blogs'); 
     } else {
       alert(response.statusText);
     }
