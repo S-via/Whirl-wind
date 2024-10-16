@@ -13,9 +13,6 @@ const seedDatabase = async () => {
             returning: true,
         });
         console.log("Users seeded successfully");
-        // const blogs = await Blog.bulkCreate(blogData, {
-        //     returning: true,
-        // });
 
         for (const blog of blogData) {
             await Blog.create({
