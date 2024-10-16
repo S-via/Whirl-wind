@@ -1,60 +1,80 @@
 # Whirl-wind
-![whirlwind](/img/whirlwind-mp.png)
-Deployed Application <!--Deployed URL  -->
-
-### USER STORY
-AS a travel enthusiast,
-I WANT a website that displays postings made by previous travelers
-SO THAT I can conveniently get information on activities, lodgings, and budget for 
-that certain destination to utilize as a reference for my next trip.
 
 ## Table Of Contents
-- [TechnologiesUsed](#technologiesused)
+
+- [Project Description](#projectdescription)
+- [Technologies Used](#technologiesused)
+- [Key Features](#keyfeatures)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributors](#contributors) 
-- [Refrences](#refrences)
+- [Credits](#credits)
+- [License](#license)
 
+## Project Description
 
-## Technologies Used 
--- node.js
+As a travel enthusiast, there are many resources available to help plan trips. Between flight aggregators, online travel agencies, and endless accomodation options, the choices can be overwhelming. Whirlwind was created to simplify the process of planning vacations and connecting travelers. The app was designed to allow registered users to enter information about their travels, such as their destination, budget, lodging, activities, trip rating, and overall experience. 
+
+## Technologies Used
+
+-- MVC file structure
+-- Node.js
 -- Express.js
--- PostgresSQL 
--- Sequelize ORM for database
--- Embla for Carousel 
--- HTML, CSS, Javascript, Handlebars.js
--- bycrypt, express-session
--- Render for Deployemt
+-- PostgresSQL
+-- Sequelize ORM
+-- HTML
+-- CSS & Bootstrap CSS
+-- Javascript & Handlebars.js
+-- Bootstrap Carousel
+-- Render for deployment
+
+## Key Features
+
+Whirlwind requires the user to login or sign up for access to travel blog content. Once signed in, they are directed to a homepage listing all existing travel blogs, as well as a form to create a new blog post. When they navigate to their dashboard, they will see all the posts that they have created.
 
 ## Installation
---- Node.js
---- PostgreSQL
 
-## Usage 
-When the user is at the Whirlwind main page they will see at the top a navigation bar that has an option of Blogs and Profile<br>
-<br>
-They will also see an option to
-log in using their username and password or sign up if they don't have an account<br>
-Page also displays photos of users trips
-![whirlwind](/img/whirlwind-mp.png)<br>
- 
-### Signup <br>
-When user clicks Sign Up<br>
-they will be redirected to create account with Email, create a Username and Password<br>
-Once they click Create Your Account they will be redirected to New Post
-![signup](/img/signup.png)<br>
+In order to use this app locally, the user must install Node.js and PostgreSQL. Alternatively, the app can be accessed through the Render deployment.
 
-### New Post <br>
-When user is in New Post<br>
-they will be asked 6 question to get information for an Informational Post<br>
-Once user clicks Submmit 
-![newpost](/img/newpost.png)<br>
+Render deployment:
+https://whirl-wind.onrender.com/
 
-![blogs]()<br>
-![profile]()<br>
+GitHub repository:
+https://github.com/S-via/Whirl-wind
 
-## Contributors  
-<!--link profile--> [Finola-McBurnie](https://github.com/qbres333)
-<!--link profile --> [Yin-Wu](https://github.com/yinwu173)
+## Usage
 
-## Refrences 
+To use the app locally, the user can do the following:
+    -- right click on 'db' folder and open in the terminal
+    -- enter 'psql -U postgres', then password
+    -- type '\i schema.sql and press ENTER
+    -- right click on 'server.js' file and open in the terminal
+    -- run the following commands: npm i, npm run seed, node server.js
+    -- In your browser, go to 'localhost:3001'
+
+![login page](/img/homepage.png) 
+![landing page after sign in](/img/blogs.png)
+![profile](/img/profile.png)
+
+## Contributors
+
+![Finola-McBurnie](https://github.com/qbres333)
+![Yin-Wu](https://github.com/yinwu173)
+
+## Credits
+
+Bootstrap:
+https://getbootstrap.com/docs/5.0/getting-started/introduction/
+
+Bootstrap Carousel:
+https://getbootstrap.com/docs/4.0/components/carousel/
+
+Handlebars.js:
+https://handlebarsjs.com/guide/
+
+Express Routing:
+https://expressjs.com/en/guide/routing.html
+
+## License
+
+MIT License - see the LICENSE file for details.
